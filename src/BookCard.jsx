@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function BookCard({ book, isSelected, onSelect }) {
+function BookCard({ book, isSelected, onSelect, isOnLoan }) {
     const [showDetails, setShowDetails] = useState(false);
     const [similar, setSimilar] = useState([]);
     const [loadingSimilar, setLoadingSimilar] = useState(false);
@@ -39,11 +39,8 @@ function BookCard({ book, isSelected, onSelect }) {
 
     if (showDetails) {
         return (
-            <div
-                className={`card ${
-                    isSelected ? "card-selected" : ""
-                } book-details`}
-            >
+            <div className={`card ${isSelected ? "card-selected" : ""} book-details`}>
+                {isOnLoan && <div className="loan-badge">On Loan</div>}
                 <div className="details-row">
                     <div className="image details-image">
                         <img
@@ -127,10 +124,8 @@ function BookCard({ book, isSelected, onSelect }) {
     }
 
     return (
-        <div
-            className={`card ${isSelected ? "card-selected" : ""}`}
-            onClick={handleCardClick}
-        >
+        <div className={`card ${isSelected ? "card-selected" : ""}`} onClick={handleCardClick}>
+            {isOnLoan && <div className="loan-badge">On Loan</div>}
             <a
                 href={book.url}
                 target="_blank"
