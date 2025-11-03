@@ -41,7 +41,9 @@ function App() {
             ...formData,
             isbn13: Date.now().toString(),
             price: "$0.00",
-            image: formData.image || "https://media1.tenor.com/m/DkActybid-oAAAAd/my-apologies-cheese.gif",
+            image:
+                formData.image ||
+                "https://media1.tenor.com/m/DkActybid-oAAAAd/my-apologies-cheese.gif",
             url: "#",
             selected: false,
         };
